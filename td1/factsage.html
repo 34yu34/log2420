@@ -9,11 +9,13 @@
 </head>
 
 <body class="align-center">
+
   <div id="header">
-    <h1 id="title">Fact-Format Output</h1>
+    <img src="image/factsage.png" id="title">
     <div id="head-line1"></div>
     <div id="head-line2"></div>
   </div>
+
   <div id="body">
     <div class="paragraph-bubble">
       <p>Let us examine the results for the following molar reaction at 1 atm and 298.15 K:</p>
@@ -21,6 +23,7 @@
         Mg + 3 Cu2O + 2 Fe3C = ?
       </div>
     </div>
+
     <div class="paragraph-bubble">
       <p>Complete equilibrium is assumed (i.e. kinetics are ignored). In
         <b class="equilib-web-font">Equilib-Web</b>, the possible equilibrium products are an ideal gas phase, pure solids and pure liquids. In the Equilib module of the full <img src="image/factsage.png" alt=""> package, charged species (aqueous and
@@ -31,24 +34,27 @@
       <p>From the Gibbs phase rule, F = C - P +2, F is degrees of freedom, C is the number of components, and P is the number of phases. In
         <b class="equilib-web-font">Equilib-Web</b> the product T and P are constrained (i.e. F = 2). In the present example there are 5 elements (Mg, Cu, O, Fe and C) and so from the phase rule there will be up to 5 stable product phases.</p>
     </div>
+
     <div class="equation">
       Mg + 3 Cu2O + 2 Fe3C =
     </div>
+
     <div class="button" id="button1" onclick="showHiddenRow();">Show all</div>
-    <table id="table1">
+
+    <table id="table-constante">
       </tr>
       <tr>
-        <th class="border-color">name (n)</th>
-        <th class="border-color">concentration (c)</th>
-        <th class="border-color" colspan="6">conditions (co)</th>
+        <th>name (n)</th>
+        <th>concentration (c)</th>
+        <th colspan="4">conditions (co)</th>
       </tr>
       <tr>
-        <th class="border-color"></th>
-        <th class="border-color"></th>
-        <th class="border-color">temperature (t)</th>
-        <th class="border-color">pression (p)</th>
-        <th class="border-color">type (ty)</th>
-        <th class="border-color">a</th>
+        <th></th>
+        <th></th>
+        <th>temperature (t)</th>
+        <th>pression (p)</th>
+        <th>type (ty)</th>
+        <th>a</th>
       </tr>
     </table>
     <div class="paragraph-bubble">
@@ -57,7 +63,7 @@
     <div class="equation">
       Solutions
     </div>
-    <table id="table2">
+    <table id="table-solution">
       <script type="text/javascript" src="factsage.js"></script>
     </table>
     <div class="paragraph-bubble">

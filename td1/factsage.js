@@ -4,9 +4,8 @@
 let addTableElement = (row, text,display) => {
   let column = document.createElement('td');
   let nameText = document.createTextNode(text);
-  column.className = 'border-color';
   if (!display) {
-    column.className = "border-color hidden-row"
+    column.className = "hidden-row"
   }
   column.appendChild(nameText);
   row.appendChild(column);
@@ -15,14 +14,17 @@ let addTableElement = (row, text,display) => {
 *	Add a row elements from the data-Output to a table
 *********************************************************************/
 let addRow = (material, table, display) => {
+  // les titres des entete afin d'iterer au travers
   const tableHeader = ['libelle', 'concentration', 'conditions']
   const tableConditionHeader = ['temperature', 'pression', 'type', 'a']
   let row = document.createElement('tr');
   for (let header of tableHeader) {
+    // on ajoute les elements du premier header
     if (header != 'conditions') {
       let text = material[header]
       addTableElement(row, text, display)
     } else {
+      // lorsque on rentre dans condition on ajoutes les elements du second header
       for (let condition of tableConditionHeader) {
         let item = material[header][condition]
         if (item.unite && item.valeur) {
@@ -63,25 +65,29 @@ let showHiddenRow = () => {
 /*********************************************************************
 *  Main loop
 *********************************************************************/
-const table1 = document.getElementById('table1');
-const table2 = document.getElementById('table2')
+const table1 = document.getElementById('table-constante');
+const table2 = document.getElementById('table-solution')
 let req = new XMLHttpRequest();
 req.responseType = 'json';
 req.open('GET', 'db/data-output.json', true);
 req.onload = function() {
   let table = req.response;
+  //on popule la table des constantes
   let materials = table.output1;
   for (let i = 0; i < materials.length; i++) {
     addRow(materials[i], table1, materials[i].concentration > 0.1E-4)
   }
+  //on popule la table des solutions
   let solutions = table.output2;
   let table2Head = document.createElement('tr');
   let table2Body = document.createElement('tr');
+  // On ajoute une colone pour chaque element de output2
   for (let i = 0; i< solutions.length; i++) {
     text = solutions[i].libelle + " (" + solutions[i].unite + ")";
     addTableElement(table2Head, text, true);
     addTableElement(table2Body, solutions[i].valeur, true);
   }
+  // On ajoute les lignes dans la table des solution
   table2.appendChild(table2Head);
   table2.appendChild(table2Body);
 };
