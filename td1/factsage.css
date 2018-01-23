@@ -1,0 +1,170 @@
+
+body {
+  background: linear-gradient(60deg,#303030,#000000,#303030);
+  color: white;
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 0px;
+}
+
+h1 {
+  font-size: 25px;
+  text-align: center;
+}
+
+p {
+  text-align: justify;
+}
+
+tr {
+  margin: 0px;
+}
+
+tr, th, td {
+  padding: 5px;
+}
+
+#header {
+  background-color: #440000;
+  padding: 15px;
+}
+
+#title {
+  width: 25%;
+  color: #ffffff ;
+  margin: 5px auto;
+}
+
+#head-line1 {
+  width: 25%;
+  border: 1px solid red;
+  border-collapse: collapse;
+  margin-left: 35%;
+  margin-bottom: 1px;
+}
+
+#head-line2 {
+  width: 20%;
+  border: 1px solid orange;
+  border-collapse: collapse;
+  margin-left: 45%;
+}
+
+#body {
+  width: 60%;
+  margin: auto;
+}
+
+.paragraph-bubble {
+  display: flex;
+  flex-flow: column nowrap;
+  align-content: center;
+  justify-content: center;
+  padding: 5px;
+  margin: 0px auto;
+}
+
+.equation {
+  font-weight: bold;
+  margin: 10px auto;
+  text-align: center;
+  color: orange;
+}
+
+.equilib-web-font {
+  width: auto;
+  font-weight: bold;
+}
+
+.line {
+  border: 1px solid red;
+  margin: 0px 10px;
+}
+
+.button {
+  width: 100px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background-color: orange;
+  border-radius: 10px;
+  box-shadow: 0px 7px #904500;
+  margin: 5px auto;
+}
+
+.button:hover {
+  background-color: darkorange;
+}
+
+.button:active {
+  transform: translate(0px, 5px);
+  background-color: darkorange;
+  box-shadow: 0px 3px #904500;
+}
+
+#button1 {
+  position: relative;
+  right: 45%;
+  bottom: 10px;
+}
+
+#table1 {
+  margin: 0px auto;
+  border-collapse: collapse;
+  border: 2px solid orange;
+  text-align: center;
+}
+
+#table1 th {
+  background-color: #303030;
+  text-transform: capitalize;
+}
+
+#table1 tr:nth-child(2) {
+  border-bottom: 2px solid orange;
+}
+
+#table1 td:last-child, #table1 th:last-child {
+  border-right: 2px solid orange;
+}
+
+#table1 tr:nth-child(odd){
+  background-color: #303030;
+}
+
+#table1 tr:nth-child(even) {
+  background-color: black;
+}
+
+#table1 td {
+  border-bottom: 2px solid orange;
+}
+
+#table1 .hidden-row {
+  display: none;
+}
+
+#table2 {
+  margin: 10px auto;
+  border-collapse: collapse;
+  border: 2px solid orange;
+  text-align: center;
+}
+
+#table2 tr:nth-child(even) {
+  background-color: #303030;
+}
+
+#footer {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 0px 10px;
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+.footer-text {
+  margin: 3px 0px;
+}
