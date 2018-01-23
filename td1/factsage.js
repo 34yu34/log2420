@@ -67,7 +67,7 @@ const table1 = document.getElementById('table1');
 const table2 = document.getElementById('table2')
 let req = new XMLHttpRequest();
 req.responseType = 'json';
-req.open('GET', 'data-output.json', true);
+req.open('GET', 'db/data-output.json', true);
 req.onload = function() {
   let table = req.response;
   let materials = table.output1;
