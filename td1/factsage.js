@@ -1,3 +1,6 @@
+/*********************************************************************
+*  Add a table element (td) to a give row with the text text
+*********************************************************************/
 let addTableElement = (row, text,display) => {
   let column = document.createElement('td');
   let nameText = document.createTextNode(text);
@@ -8,7 +11,9 @@ let addTableElement = (row, text,display) => {
   column.appendChild(nameText);
   row.appendChild(column);
 }
-
+/*********************************************************************
+*	Add a row elements from the data-Output to a table
+*********************************************************************/
 let addRow = (material, table, display) => {
   const tableHeader = ['libelle', 'concentration', 'conditions']
   const tableConditionHeader = ['temperature', 'pression', 'type', 'a']
@@ -33,9 +38,10 @@ let addRow = (material, table, display) => {
   }
   table.appendChild(row);
 }
-
+/*********************************************************************
+*	The onclick function for the button1 that shows the display none
+*********************************************************************/
 let isShow = false
-
 let showHiddenRow = () => {
   let button1 = document.getElementById('button1');
   let rows = document.getElementsByClassName('hidden-row');
@@ -54,6 +60,9 @@ let showHiddenRow = () => {
    isShow = !isShow;
 }
 
+/*********************************************************************
+*  Main loop
+*********************************************************************/
 const table1 = document.getElementById('table1');
 const table2 = document.getElementById('table2')
 let req = new XMLHttpRequest();
