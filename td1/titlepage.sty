@@ -1,0 +1,66 @@
+%Tout package doit avoir ces 2 lignes
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{titlepage}
+%les package a donner en dessous
+%package pour changer les label dans les enumerations
+% s'utilise avec \begin{enumerate}[label =blah \roman* \alph*] => \
+\RequirePackage{enumitem}
+%package pour choisir le path des images et plusieurs option graphique
+\RequirePackage{graphicx}
+%package pour faire des align* en math mode
+\RequirePackage{amsmath}
+%package pour faire des arbre
+\RequirePackage{forest}
+\forestset{qtree/.style={for tree={parent anchor=south, %ajoute des retour de ligne dans les arbres
+	child anchor=north,align=center,inner sep=0pt}}}
+
+\RequirePackage{geometry}
+
+\geometry{
+	a4paper,
+	left=10mm,
+	right=10mm,
+	top=20mm,
+	bottom=20mm
+}
+
+%Creation des nouvelles commandes
+\newcommand*{\dateremise}[1]{\gdef\@dateremise{#1}}
+\newcommand*{\prof}[1]{\gdef\@prof{#1}}
+\renewcommand*{\title}[1]{\gdef\@title{#1}}
+\newcommand*{\subtitle}[1]{\gdef\@subtitle{#1}}
+\renewcommand*{\author}[3]{\gdef\@author{#1\\#2\\#3}}
+
+%\title{TEST}
+%\dateremise{le 2 octobre 2017}
+%\author{Billy Bouchard}{}
+%\prof{Abdelatif Armani}
+\renewcommand*{\maketitle}
+{
+	\begin{titlepage}
+		\begin{center}
+			\vspace*{1cm}
+			\Huge  \textbf{\@title}\\
+
+			\@subtitle \\
+
+			\vspace{2.0cm}
+
+			\large \textbf{\@author}
+
+			\vfill
+
+			Un Travail pr\'esent\'e \`a :\\
+			\@prof
+
+			\vspace{0.8cm}
+
+			\includegraphics[width=0.4\textwidth]{university.png}\\
+			\Large
+			D\'epartement G\'enie informatique et Logiciel\\
+			Polytechnique Montreal\\
+			\@dateremise\\
+
+		\end{center}
+	\end{titlepage}
+}
