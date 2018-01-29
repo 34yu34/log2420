@@ -1,170 +1,240 @@
+/*********************************************************************
+* General Structure Elements
+*********************************************************************/
 body {
-  background: linear-gradient(60deg, #303030, #000000, #303030);
-  color: white;
+  /* Positioning */
+  margin: 0px;
+
+  /* Box Model */
   display: flex;
   flex-flow: column nowrap;
-  margin: 0px;
+  background: linear-gradient(60deg, #303030, #000000, #303030);
+
+  /* Text */
+  color: white;
 }
 
-h1 {
-  font-size: 25px;
-  text-align: center;
+#body {
+  /* Positioning */
+  margin: auto;
+
+  /* Box Model */
+  width: 60%;
 }
 
-p {
-  text-align: justify;
+.spacer {
+  /* Box Model */
+  flex-grow: 1;
 }
 
-tr {
-  margin: 0px;
+.line {
+  /* Positioning */
+  margin: 0px 10px;
+
+  /* Box Model */
+  border: 1px solid red;
 }
 
-tr, th, td {
-  padding: 5px;
-}
-
+/*********************************************************************
+* Header Elements
+*********************************************************************/
 #header {
+  /* Box Model */
   background-color: #440000;
   padding: 15px;
 }
 
 #title {
-  width: 25%;
-  color: #ffffff;
+  /* Positioning */
   margin-left: calc(50% - calc(25% / 2));
   margin-bottom: 10px;
+
+  /* Box Model */
+  width: 25%;
 }
 
 #head-line1 {
+  /* Positioning */
+  margin-left: 35%;
+  margin-bottom: 1px;
+
+  /* Box Model */
   width: 25%;
   border: 1px solid red;
   border-collapse: collapse;
-  margin-left: 35%;
-  margin-bottom: 1px;
 }
 
 #head-line2 {
+  /* Positioning */
+  margin-left: 45%;
+
+  /* Box Model */
   width: 20%;
   border: 1px solid orange;
   border-collapse: collapse;
-  margin-left: 45%;
 }
 
-#body {
-  width: 60%;
-  margin: auto;
-}
-
+/*********************************************************************
+* Paragraphs Elements
+*********************************************************************/
 .paragraph-bubble {
+  /* Box Model */
   display: flex;
   flex-flow: column nowrap;
   align-content: center;
   justify-content: center;
-  padding: 5px;
-  margin: 0px auto;
+}
+
+p {
+  /* Text */
+  text-align: justify;
 }
 
 .equation {
-  font-weight: bold;
+  /* Positioning */
   margin: 10px auto;
+
+  /* Text */
+  font-weight: bold;
   text-align: center;
   color: orange;
 }
 
 .equilib-web-font {
+  /* Box Model */
   width: auto;
+
+  /* Text */
   font-weight: bold;
 }
 
-.line {
-  border: 1px solid red;
-  margin: 0px 10px;
-}
+ /*********************************************************************
+ * Table elements
+ *********************************************************************/
+ .hidden-row {
+   /* Box Model */
+   display: none;
+ }
 
+ th, td {
+   /* Box Model */
+   padding: 5px;
+ }
+
+/* Table des constantes
+--------------------------------------------------------------------*/
+ #table-constante {
+   /* Positioning */
+   margin: 0px auto;
+
+   /* Box Model */
+   border-collapse: collapse;
+   border: 2px solid orange;
+
+   /* Text */
+   text-align: center;
+ }
+
+ #table-constante th {
+   /* Box Model */
+   background-color: #303030;
+
+   /* Text */
+   text-transform: capitalize;
+ }
+
+ #table-constante tr:nth-child(2), #table-constante td {
+   /* Box Model */
+   border-bottom: 2px solid orange;
+ }
+
+ #table-constante td:last-child, #table-constante th:last-child {
+   /* Box Model */
+   border-right: 2px solid orange;
+ }
+
+ #table-constante tr:nth-child(odd) {
+   /* Box Model */
+   background-color: #303030;
+ }
+
+ #table-constante tr:nth-child(even) {
+   /* Box Model */
+   background-color: black;
+ }
+
+/* Table des solutions
+--------------------------------------------------------------------*/
+ #table-solution {
+   /* Positioning */
+   margin: 10px auto;
+
+   /* Box Model */
+   border-collapse: collapse;
+   border: 2px solid orange;
+
+   /* Text */
+   text-align: center;
+ }
+
+ #table-solution tr:nth-child(even) {
+   /* Box Model */
+   background-color: #303030;
+ }
+
+/*********************************************************************
+* Buttons elements
+*********************************************************************/
 .button {
+  /* Positioning */
+  margin: 5px auto;
+
+  /* Box Model */
   width: 100px;
   height: 50px;
-  line-height: 50px;
-  text-align: center;
   background-color: orange;
   border-radius: 10px;
   box-shadow: 0px 7px #904500;
-  margin: 5px auto;
+
+  /* Text */
+  line-height: 50px;
+  text-align: center;
 }
 
 .button:hover {
+  /* Box Model */
   background-color: darkorange;
 }
 
 .button:active {
+  /* Positioning */
   transform: translate(0px, 5px);
+
+  /* Box Model */
   background-color: darkorange;
   box-shadow: 0px 3px #904500;
 }
 
 #button1 {
+  /* Positioning */
   position: relative;
   right: 45%;
   bottom: 10px;
 }
 
-#table-constante {
-  margin: 0px auto;
-  border-collapse: collapse;
-  border: 2px solid orange;
-  text-align: center;
-}
-
-#table-constante th {
-  background-color: #303030;
-  text-transform: capitalize;
-}
-
-#table-constante tr:nth-child(2) {
-  border-bottom: 2px solid orange;
-}
-
-#table-constante td:last-child, #table-constante th:last-child {
-  border-right: 2px solid orange;
-}
-
-#table-constante tr:nth-child(odd) {
-  background-color: #303030;
-}
-
-#table-constante tr:nth-child(even) {
-  background-color: black;
-}
-
-#table-constante td {
-  border-bottom: 2px solid orange;
-}
-
-#table-constante .hidden-row {
-  display: none;
-}
-
-#table-solution {
-  margin: 10px auto;
-  border-collapse: collapse;
-  border: 2px solid orange;
-  text-align: center;
-}
-
-#table-solution tr:nth-child(even) {
-  background-color: #303030;
-}
-
+/*********************************************************************
+* Footer Elements
+*********************************************************************/
 #footer {
+  /* Positioning */
+  margin: 0px 10px;
+
+  /* Box Model */
   display: flex;
   flex-flow: row nowrap;
-  margin: 0px 10px;
-}
-
-.spacer {
-  flex-grow: 1;
 }
 
 .footer-text {
+  /* Positioning */
   margin: 3px 0px;
 }
