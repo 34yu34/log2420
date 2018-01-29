@@ -9,38 +9,26 @@
 </head>
 
 <body class="align-center">
-
   <div id="header">
     <img src="image/factsage.png" id="title">
     <div id="head-line1"></div>
     <div id="head-line2"></div>
   </div>
-
   <div id="body">
     <div class="paragraph-bubble">
       <p>Let us examine the results for the following molar reaction at 1 atm and 298.15 K:</p>
-      <div class="equation ">
-        Mg + 3 Cu2O + 2 Fe3C = ?
-      </div>
+      <div class="equation ">Mg + 3 Cu2O + 2 Fe3C = ?</div>
     </div>
-
     <div class="paragraph-bubble">
-      <p>Complete equilibrium is assumed (i.e. kinetics are ignored). In
-        <b class="equilib-web-font">Equilib-Web</b>, the possible equilibrium products are an ideal gas phase, pure solids and pure liquids. In the Equilib module of the full <img src="image/factsage.png" alt=""> package, charged species (aqueous and gaseous ions), non-ideal solution data and additional databases can also be included.</p>
+      <p>Complete equilibrium is assumed (i.e. kinetics are ignored). In <b class="equilib-web-font">Equilib-Web</b>, the possible equilibrium products are an ideal gas phase, pure solids and pure liquids. In the Equilib module of the full <img src="image/factsage.png" alt=""> package, charged species (aqueous and gaseous ions), non-ideal solution data and additional databases can also be included.</p>
       <div class="line"></div>
       <p>The FACT-Format prints the computed equilibrium composition of the gas phase followed by all possible product solids and liquids, ordered with respect to activity. Even if the gas phase is not stable (as in the current example), the output still yields equilibrium potentials of the gaseous species.</p>
-      <p>From the Gibbs phase rule, F = C - P +2, F is degrees of freedom, C is the number of components, and P is the number of phases. In
-        <b class="equilib-web-font">Equilib-Web</b> the product T and P are constrained (i.e. F = 2). In the present example there are 5 elements (Mg, Cu, O, Fe and C) and so from the phase rule there will be up to 5 stable product phases.</p>
+      <p>From the Gibbs phase rule, F = C - P +2, F is degrees of freedom, C is the number of components, and P is the number of phases. In <b class="equilib-web-font">Equilib-Web</b> the product T and P are constrained (i.e. F = 2). In the present example there are 5 elements (Mg, Cu, O, Fe and C) and so from the phase rule there will be up to 5 stable product phases.</p>
     </div>
-
-    <div class="equation">
-      Mg + 3 Cu2O + 2 Fe3C =
-    </div>
+    <div class="equation">Mg + 3 Cu2O + 2 Fe3C =</div>
 
     <div class="button" id="button1" onclick="showHiddenRow();">Show all</div>
-
     <table id="table-constante">
-      </tr>
       <tr>
         <th>name (n)</th>
         <th>concentration (c)</th>
@@ -58,32 +46,21 @@
     <div class="paragraph-bubble">
       <p> The cutoff concentration has been specified to 1.000E-70 Data on 1 product species identified with "X" have not been extrapolated in computing the phase assemblage</p>
     </div>
-    <div class="equation">
-      Solutions
-    </div>
+    <div class="equation">Solutions</div>
     <table id="table-solution">
       <script type="text/javascript" src="factsage.js"></script>
     </table>
     <div class="paragraph-bubble">
-      <p>
-        The equilibrium products - Cu, Fe, C, MgO and Fe3O4 - satisfy the mass balance. The gas phase is treated as ideal ('gas_ideal'). The results show the sum of the gas partial pressures is 0.21821e-19 atm. Since the total pressure is 1 atm, the gas phase is not stable.
-      </p>
-      <p>
-        In the <b class="equilib-web-font">Equilib</b> module of the full <img src="image/factsage.png" alt=""> package the gas can be treated as real using the virial equation of state and gas coefficient data, and the product total pressure (or total volume) fixed at values other than unity. Compressibilities of the condensed phases also may be included in the computation.
-      </p>
+      <p>The equilibrium products - Cu, Fe, C, MgO and Fe3O4 - satisfy the mass balance. The gas phase is treated as ideal ('gas_ideal'). The results show the sum of the gas partial pressures is 0.21821e-19 atm. Since the total pressure is 1 atm, the gas phase is not stable.</p>
+      <p>In the <b class="equilib-web-font">Equilib</b> module of the full <img src="image/factsage.png" alt=""> package the gas can be treated as real using the virial equation of state and gas coefficient data, and the product total pressure (or total volume) fixed at values other than unity. Compressibilities of the condensed phases also may be included in the computation.</p>
     </div>
   </div>
   <div class="line"></div>
   <div id="footer">
-    <div class="footer-text">
-      updated: August 2002, Christopher W. Bale
-    </div>
+    <div class="footer-text">updated: August 2002, Christopher W. Bale</div>
     <div class="spacer"></div>
-    <div class="footer-text">
-      created by Jacob Dorais and Billy Bouchard
-    </div>
+    <div class="footer-text">created by Jacob Dorais and Billy Bouchard</div>
   </div>
-
 </body>
 
 </html>
