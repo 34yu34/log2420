@@ -71,8 +71,8 @@ const table1 = document.getElementById('table-constante')
 const table2 = document.getElementById('table-solution')
 let req = new XMLHttpRequest()
 req.responseType = 'json'
-req.open('GET', 'db/data-output.json', true)
-req.onload = function() {
+req.open('GET', 'data-output.json', true)
+req.onload = function () {
   let table = req.response
   //on popule la table des constantes
   let materials = table.output1
