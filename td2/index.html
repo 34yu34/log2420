@@ -14,10 +14,10 @@
   <script src="jquery.min.js"></script>
   <script type="text/javascript" src="main.js"></script>
   <div id="header">
-    <div id="title" class="header-button">Vélo Montréal</div>
-    <div class="header-button">Accueil</div>
+    <a href="#" id="title" class="header-button">Vélo Montréal</a>
+    <a href="#" class="header-button">Accueil</a>
     <div class="spacer"></div>
-    <div class="header-button"><i class="fas fa-globe"></i></div>
+    <a href="#" class="header-button"><i class="fas fa-globe"></i></a>
   </div>
   <div class=""></div>
   <div id="core">
@@ -25,17 +25,62 @@
       <div class="select-panel active-panel">Carte des Stations</div>
       <div class="empty-panel">Liste des Stations</div>
     </div>
-    <div class="tab-content">
+    <div id="tab-content">
       <div id="carte-station" class="core-pane">
-        <h1>Bleh</h1>
+        <div class="selector">
+          <div class="input-div">
+            <input id="autocomplete-input" type="text" name="station" placeholder="Nom de la Station">
+            <h1>Localisation</h1>
+            <div id="localisation"></div>
+          </div>
+          <div class="information-div">
+            <h1>État de la Station de vélo</h1>
+            <div class="blue-div"></div>
+            <div id="table1">
+              <div class="text">Id Station</div>
+              <div class="value">
+                <div class="bubble" id="id-station">-</div>
+              </div>
+              <div class="text">Velos Disponible</div>
+              <div class="value">
+                <div class="bubble" id="velo-dispo">-</div>
+              </div>
+              <div class="text">Bloquee</div>
+              <div class="value">
+                <div class="bubble" id="bloquee">-</div>
+              </div>
+              <div class="text">Borne Disponible</div>
+              <div class="value">
+                <div class="bubble" id="borne-dispo">-</div>
+              </div>
+              <div class="text">Suspendu</div>
+              <div class="value">
+                <div class="bubble" id="suspendu">-</div>
+              </div>
+              <div class="text">Velo Indisponible</div>
+              <div class="value">
+                <div class="bubble" id="velo-indispo">-</div>
+              </div>
+              <div class="text">Hors Service</div>
+              <div class="value">
+                <div class="bubble" id="hors-service">-</div>
+              </div>
+              <div class="text">Borne Indisponible</div>
+              <div class="value">
+                <div class="bubble" id="borne-indispo">-</div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div id='map'></div>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjonwWBWoE1W6L8sU7KPl7zkRLSaPNC2o&callback=initMap"></script>
       </div>
       <div id="liste-station" class="core-pane">
-        <h1>Blah</h1>
+        <h1>État de toutes les stations</h1>
+        <p>Affichez <input type="number" name="station-number" value="10"> éléments</p>
       </div>
     </div>
   </div>
 </body>
 
-</html>
+</html
