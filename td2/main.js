@@ -48,17 +48,39 @@ $(function () {
     "bellette",
     "hello",
     "cool"
-  ]
+  ];
   $("#autocomplete-input")
     .autocomplete({
       source: tags
-    })
-})
-
+    });
+});
 $(document)
   .ready(function () {
     $("#liste-station")
       .css("display", "none")
+    /*********************************************************************
+     *  Fonction pour la datatable
+     *********************************************************************/
+    var data = [
+      [
+        "Tiger Nixon",
+        "System Architect",
+        "Edinburgh",
+        "5421",
+        "2011/04/25",
+        "$3,120"
+      ],
+      [
+        "Garrett Winters",
+        "Director",
+        "Edinburgh",
+        "8422",
+        "2011/07/25",
+        "$5,300"
+      ]
+    ]
+    $('#table2')
+      .DataTable()
     /*********************************************************************
      * La fonction Onclick qui permet de changer la vue entre
      * la carte et la liste
