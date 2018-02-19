@@ -57,6 +57,7 @@ body {
   margin: 10px 10px 0px 10px;
   font-size: 16px;
   border-radius: 5px 5px 0px 0px;
+  cursor:pointer;
 }
 .select-panel {
   background-color: green;
