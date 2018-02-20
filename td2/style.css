@@ -82,6 +82,10 @@ a:visited {
   cursor: pointer;
 }
 
+.empty-panel:hover {
+  background: #d7d7d7;
+}
+
 .select-panel {
   background-color: #00af00;
   color: #ffffff;
