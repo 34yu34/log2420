@@ -1,15 +1,31 @@
+var data;
+var tags = [];
+
+/*********************************************************************
+ *  Fonction qui effectue la demande des informations
+ *********************************************************************/
+function getdata() {
+  let req = new XMLHttpRequest();
+  //req.responseType = 'json';
+  req.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      data = JSON.parse(this.responseText);
+      stationDataUpdate();
+    }
+  }
+  req.open('GET', 'https://secure.bixi.com/data/stations.json', true);
+  req.send();
+}
+
 /*********************************************************************
  *  Fonction pour la datatable
  *********************************************************************/
-var data
-
-function data() {
+function dataTable() {
   $('#table2')
     .DataTable({
-      data: data
+
     });
 }
-
 /*********************************************************************
  *  Fonction qui fait la map
  *********************************************************************/
