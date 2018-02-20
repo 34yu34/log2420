@@ -82,6 +82,10 @@ a:visited {
   cursor: pointer;
 }
 
+.empty-panel:hover {
+  background: #d7d7d7;
+}
+
 .select-panel {
   background-color: #00af00;
   color: #ffffff;
@@ -144,7 +148,9 @@ a:visited {
 
 #map {
   height: 400px;
-  width: 80%;
+  width: 100%;
+  margin-top: 15px;
+  border-top: 10px solid #268aff;
 }
 /*********************************************************************
 * Liste station
