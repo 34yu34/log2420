@@ -79,8 +79,7 @@ a:visited {
   /* Box model */
   padding: 5px;
   border-radius: 5px 5px 0px 0px;
-  /* Text */
-  font-size: 16px;
+  cursor: pointer;
 }
 
 .select-panel {
