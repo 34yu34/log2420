@@ -1,6 +1,5 @@
 var data;
 var tags = [];
-
 /*********************************************************************
  *  Fonction qui effectue la demande des informations
  *********************************************************************/
@@ -11,6 +10,7 @@ function getdata() {
     if (this.readyState == 4 && this.status == 200) {
       data = JSON.parse(this.responseText);
       stationDataUpdate();
+      updateStation();
     }
   }
   req.open('GET', 'https://secure.bixi.com/data/stations.json', true);
@@ -29,20 +29,113 @@ function dataTable() {
 /*********************************************************************
  *  Fonction qui fait la map
  *********************************************************************/
+var map
+var center
+
 function initMap() {
-  var mtl = {
+  center = {
     lat: 45.5017,
     lng: -73.6200
   };
-  var map = new google.maps.Map(document.getElementById('map'), {
+  map = new google.maps.Map(document.getElementById('map'), {
     zoom: 13,
-    center: mtl
+    center: center
   });
+  marker = new google.maps.Marker({
+    position: center,
+    map: map
+  })
+}
+/*********************************************************************
+ * La fonction Onclick qui permet de changer la vue entre
+ * la carte et la liste
+ *********************************************************************/
+function panelSwitch() {
+  $("#liste-station")
+    .css("display", "none")
+  $(".empty-panel,.select-panel")
+    .bind("click", function () {
+      $(".select-panel")
+        .removeClass("select-panel")
+        .addClass("empty-panel")
+      $(this)
+        .removeClass("empty-panel")
+        .addClass("select-panel")
+      if ($(this)
+        .text() == "Carte des Stations") {
+        $("#carte-station")
+          .css("display", "flex")
+        $("#liste-station")
+          .css("display", "none")
+      } else {
+        $("#carte-station")
+          .css("display", "none")
+        $("#liste-station")
+          .css("display", "flex")
+      }
+    })
 }
 /*********************************************************************
  *  Fonction qui permet d'afficher les couleurs des stations
  *********************************************************************/
 function updateStation() {
+  $("#autocomplete-input")
+    .bind('keypress', function (e) {
+      if (e.which == 13) {
+        let value = $("#autocomplete-input")
+          .val()
+        for (let i = 0; i < data.stations.length; i++) {
+          if (value == data.stations[i].s) {
+            center = {
+              lat: data.stations[i].la,
+              lng: data.stations[i].lo
+            }
+            map.setCenter(center)
+            marker.setPosition(center)
+            $("#localisation")
+              .text(value)
+            $("#id-station")
+              .text(data.stations[i].n)
+            $("#velo-dispo")
+              .text(data.stations[i].ba)
+            $("#velo-indispo")
+              .text(data.stations[i].bx)
+            $("#borne-dispo")
+              .text(data.stations[i].da)
+            $("#borne-indispo")
+              .text(data.stations[i].dx)
+            if (data.stations[i].b) {
+              $("#bloquee")
+                .text("oui")
+            } else {
+              $("#bloquee")
+                .text("non")
+            }
+            if (data.stations[i].su) {
+              $("#suspendu")
+                .text("oui")
+            } else {
+              $("#suspendu")
+                .text("non")
+            }
+            if (data.stations[i].m) {
+              $("#hors-service")
+                .text("oui")
+            } else {
+              $("#hors-service")
+                .text("non")
+            }
+          }
+        }
+        updateColor()
+      }
+    })
+}
+
+/*********************************************************************
+ *  Fonction pour mettre la couleur dans le table1
+ *********************************************************************/
+function updateColor() {
   $(".bubble")
     .each(
       function () {
@@ -69,7 +162,6 @@ function updateStation() {
  *  Fonction qui permet l'autocomplete
  *********************************************************************/
 function stationDataUpdate() {
-  console.log(data)
   for (let i = 0; i < data.stations.length; i++) {
     tags[i] = data.stations[i].s;
   }
@@ -80,37 +172,15 @@ function stationDataUpdate() {
       });
   });
 }
-
+/*********************************************************************
+ *  Fonction qui s'active une fois le document pret
+ *  et qui appel les autres fonctions
+ *********************************************************************/
 $(document)
   .ready(function () {
-    updateStation();
     $("#liste-station")
       .css("display", "none")
     getdata();
     dataTable();
-    /*********************************************************************
-     * La fonction Onclick qui permet de changer la vue entre
-     * la carte et la liste
-     *********************************************************************/
-    $(".empty-panel,.select-panel")
-      .bind("click", function () {
-        $(".select-panel")
-          .removeClass("select-panel")
-          .addClass("empty-panel")
-        $(this)
-          .removeClass("empty-panel")
-          .addClass("select-panel")
-        if ($(this)
-          .html() == "Carte des Stations") {
-          $("#carte-station")
-            .css("display", "flex")
-          $("#liste-station")
-            .css("display", "none")
-        } else {
-          $("#carte-station")
-            .css("display", "none")
-          $("#liste-station")
-            .css("display", "flex")
-        }
-      })
-  });
+    panelSwitch();
+  })
