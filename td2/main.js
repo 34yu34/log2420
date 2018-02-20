@@ -1,4 +1,16 @@
 /*********************************************************************
+ *  Fonction pour la datatable
+ *********************************************************************/
+var data
+
+function data() {
+  $('#table2')
+    .DataTable({
+      data: data
+    });
+}
+
+/*********************************************************************
  *  Fonction qui fait la map
  *********************************************************************/
 function initMap() {
@@ -18,7 +30,7 @@ function updateStation() {
   $(".bubble")
     .each(
       function () {
-        if (this.id == "suspendu") {
+        if (this.id == "suspendu" || this.id == "bloquee" || this.id == "hors-service") {
           if (this.innerHTML == "-") {
             this.style.background = "#c7c7c7"
           } else if (this.innerHTML == "non" || this.innerHTML == "0") {
@@ -55,31 +67,10 @@ $(function () {
 });
 $(document)
   .ready(function () {
+    updateStation();
     $("#liste-station")
       .css("display", "none")
-    /*********************************************************************
-     *  Fonction pour la datatable
-     *********************************************************************/
-    var data = [
-      [
-        "Tiger Nixon",
-        "System Architect",
-        "Edinburgh",
-        "5421",
-        "2011/04/25",
-        "$3,120"
-      ],
-      [
-        "Garrett Winters",
-        "Director",
-        "Edinburgh",
-        "8422",
-        "2011/07/25",
-        "$5,300"
-      ]
-    ]
-    $('#table2')
-      .DataTable()
+    data();
     /*********************************************************************
      * La fonction Onclick qui permet de changer la vue entre
      * la carte et la liste
@@ -105,5 +96,4 @@ $(document)
             .css("display", "flex")
         }
       })
-    updateStation();
   });
