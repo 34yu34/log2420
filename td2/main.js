@@ -10,7 +10,7 @@ function getdata() {
     if (this.readyState == 4 && this.status == 200) {
       data = JSON.parse(this.responseText);
       stationDataUpdate();
-      updateStation();
+      updateCarteListe();
     }
   }
   req.open('GET', 'https://secure.bixi.com/data/stations.json', true);
@@ -76,9 +76,9 @@ function panelSwitch() {
     })
 }
 /*********************************************************************
- *  Fonction qui permet d'afficher les couleurs des stations
+ *  Fonction qui permet de mettre a jour liste-carte sur Enter
  *********************************************************************/
-function updateStation() {
+function updateCarteListe() {
   $("#autocomplete-input")
     .bind('keypress', function (e) {
       if (e.which == 13) {
@@ -86,56 +86,63 @@ function updateStation() {
           .val()
         for (let i = 0; i < data.stations.length; i++) {
           if (value == data.stations[i].s) {
-            center = {
-              lat: data.stations[i].la,
-              lng: data.stations[i].lo
-            }
-            map.setCenter(center)
-            marker.setPosition(center)
-            $("#localisation")
-              .text(value)
-            $("#id-station")
-              .text(data.stations[i].n)
-            $("#velo-dispo")
-              .text(data.stations[i].ba)
-            $("#velo-indispo")
-              .text(data.stations[i].bx)
-            $("#borne-dispo")
-              .text(data.stations[i].da)
-            $("#borne-indispo")
-              .text(data.stations[i].dx)
-            if (data.stations[i].b) {
-              $("#bloquee")
-                .text("oui")
-            } else {
-              $("#bloquee")
-                .text("non")
-            }
-            if (data.stations[i].su) {
-              $("#suspendu")
-                .text("oui")
-            } else {
-              $("#suspendu")
-                .text("non")
-            }
-            if (data.stations[i].m) {
-              $("#hors-service")
-                .text("oui")
-            } else {
-              $("#hors-service")
-                .text("non")
-            }
+            updateCarteListeData(data.stations[i])
+            updateCarteListeColor()
+            return
           }
         }
-        updateColor()
       }
     })
 }
-
+/*********************************************************************
+ *  Fonction qui rempli les donnee de carte-liste
+ *********************************************************************/
+function updateCarteListeData(station) {
+  center = {
+    lat: station.la,
+    lng: station.lo
+  }
+  map.setCenter(center)
+  map.setZoom(16)
+  marker.setPosition(center)
+  $("#localisation")
+    .text(station.s)
+  $("#id-station")
+    .text(station.n)
+  $("#velo-dispo")
+    .text(station.ba)
+  $("#velo-indispo")
+    .text(station.bx)
+  $("#borne-dispo")
+    .text(station.da)
+  $("#borne-indispo")
+    .text(station.dx)
+  if (station.b) {
+    $("#bloquee")
+      .text("oui")
+  } else {
+    $("#bloquee")
+      .text("non")
+  }
+  if (station.su) {
+    $("#suspendu")
+      .text("oui")
+  } else {
+    $("#suspendu")
+      .text("non")
+  }
+  if (station.m) {
+    $("#hors-service")
+      .text("oui")
+  } else {
+    $("#hors-service")
+      .text("non")
+  }
+}
 /*********************************************************************
  *  Fonction pour mettre la couleur dans le table1
  *********************************************************************/
-function updateColor() {
+function updateCarteListeColor() {
   $(".bubble")
     .each(
       function () {
