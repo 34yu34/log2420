@@ -68,25 +68,26 @@ function updateStation() {
 /*********************************************************************
  *  Fonction qui permet l'autocomplete
  *********************************************************************/
-$(function () {
-  var tags = [
-    "blah",
-    "bleh",
-    "bellette",
-    "hello",
-    "cool"
-  ];
-  $("#autocomplete-input")
-    .autocomplete({
-      source: tags
-    });
-});
+function stationDataUpdate() {
+  console.log(data)
+  for (let i = 0; i < data.stations.length; i++) {
+    tags[i] = data.stations[i].s;
+  }
+  $(function () {
+    $("#autocomplete-input")
+      .autocomplete({
+        source: tags
+      });
+  });
+}
+
 $(document)
   .ready(function () {
     updateStation();
     $("#liste-station")
       .css("display", "none")
-    data();
+    getdata();
+    dataTable();
     /*********************************************************************
      * La fonction Onclick qui permet de changer la vue entre
      * la carte et la liste
