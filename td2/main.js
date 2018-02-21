@@ -1,15 +1,15 @@
-var data;
-var tags = [];
 /*********************************************************************
  *  Fonction qui effectue la demande des informations
  *********************************************************************/
+let data;
+
 function getdata() {
   let req = new XMLHttpRequest();
   //req.responseType = 'json';
   req.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       data = JSON.parse(this.responseText);
-      stationDataUpdate();
+      autocompleteUpdate();
       updateCarteListe();
     }
   }
@@ -20,6 +20,8 @@ function getdata() {
 /*********************************************************************
  *  Fonction pour la datatable
  *********************************************************************/
+let tags = [];
+
 function dataTable() {
   $('#table2')
     .DataTable({
@@ -29,8 +31,9 @@ function dataTable() {
 /*********************************************************************
  *  Fonction qui fait la map
  *********************************************************************/
-var map
-var center
+let map
+let center
+let marker
 
 function initMap() {
   center = {
@@ -80,16 +83,14 @@ function panelSwitch() {
  *********************************************************************/
 function updateCarteListe() {
   $("#autocomplete-input")
-    .bind('keypress', function (e) {
-      if (e.which == 13) {
-        let value = $("#autocomplete-input")
-          .val()
-        for (let i = 0; i < data.stations.length; i++) {
-          if (value == data.stations[i].s) {
-            updateCarteListeData(data.stations[i])
-            updateCarteListeColor()
-            return
-          }
+    .on("autocompleteselect", function (event, ui) {
+      let value = $("#autocomplete-input")
+        .val()
+      for (let i = 0; i < data.stations.length; i++) {
+        if (value == data.stations[i].s) {
+          updateCarteListeData(data.stations[i])
+          updateCarteListeColor()
+          return
         }
       }
     })
@@ -131,13 +132,8 @@ function updateCarteListeData(station) {
     $("#suspendu")
       .text("non")
   }
-  if (station.m) {
-    $("#hors-service")
-      .text("oui")
-  } else {
-    $("#hors-service")
-      .text("non")
-  }
+  $("#hors-service")
+    .text(station.m ? "oui" : "non")
 }
 /*********************************************************************
  *  Fonction pour mettre la couleur dans le table1
@@ -168,7 +164,7 @@ function updateCarteListeColor() {
 /*********************************************************************
  *  Fonction qui permet l'autocomplete
  *********************************************************************/
-function stationDataUpdate() {
+function autocompleteUpdate() {
   for (let i = 0; i < data.stations.length; i++) {
     tags[i] = data.stations[i].s;
   }
