@@ -11,6 +11,7 @@ function getdata() {
       data = JSON.parse(this.responseText);
       autocompleteUpdate();
       updateCarteListe();
+      dataTable();
     }
   }
   req.open('GET', 'https://secure.bixi.com/data/stations.json', true);
@@ -184,6 +185,5 @@ $(document)
     $("#liste-station")
       .css("display", "none")
     getdata();
-    dataTable();
     panelSwitch();
   })
