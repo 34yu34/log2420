@@ -19,14 +19,34 @@ function getdata() {
 }
 
 /*********************************************************************
- *  Fonction pour la datatable
+ *  Fonction qui popule la datatable
  *********************************************************************/
 let tags = [];
 
 function dataTable() {
   $('#table2')
     .DataTable({
+      data: data.stations,
+      "columns": [{
+          "data": "id"
+        },
+        {
+          "data": "s"
+        },
+        {
+          "data": "ba"
+        },
+        {
+          "data": "da"
+        },
+        {
+          "data": "b"
+        },
+        {
+          "data": "su"
+        }
 
+      ]
     });
 }
 /*********************************************************************
