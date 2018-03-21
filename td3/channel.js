@@ -18,7 +18,6 @@ class Channel {
   constructor(id, name, status, messages, numberOfUsers) {
     this.id = id;
     this.name = name;
-    this
     this.joinStatus = status;
     this.messages = messages;
     this.numberOfUsers = numberOfUsers;

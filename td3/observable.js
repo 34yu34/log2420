@@ -6,31 +6,32 @@
  */
 class Observable {
 
-  constructor(username) {
-    this.socket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + username)
-    this.username = username
+  constructor(user) {
+    this.socket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + user.name)
+    this.channel = new Channel("", "", true, [""], 9);
+    this.user = user
     //this.channelObserver = ChannelObserver()
-    //this.messageObserver = MessageObserver()
+    this.messageObserver = new MessageObserver()
     this.socket.onopen = function (event) {}
-    this.socket.onmessage = this.update
+    this.socket.onmessage = this.onMessage()
   }
-
-  update(event) {
-    console.log(event)
-    if (event.data[0] == '{') {
+  /*********************************************************************
+   *
+   *********************************************************************/
+  onMessage() {
+    var channel = this.channel
+    var user = this.user
+    var messageObserver = this.messageObserver
+    return function (event) {
       var msg = JSON.parse(event.data)
+      console.log(msg)
       if (msg.eventType == "updateChannelsList") {
-        this.channel = msg.data[0].id
-        var m = new Message("onMessage", this.channel, "hello there \nGeneral kenobi", this.username, Date.now())
+        channel.id = msg.data[0].id
+        var m = new Message("onMessage", channel.id, "hello there \nGeneral kenobi", user.name, Date.now())
         this.send(JSON.stringify(m))
       } else if (msg.eventType == "onMessage") {
-        console.log(msg.data)
+        messageObserver.read(msg, user)
       }
-    } else {
-      console.log(event.data)
     }
   }
-
 }
-
-var a = new Observable("bob")
