@@ -1,3 +1,34 @@
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  display: flex;
+  flex-flow: column;
+  margin: 0px;
+}
+
+#header {
+  height: 150px;
+  background: #F5972A;
+  display: flex;
+}
+
+#core {
+  display: flex;
+  flex-grow: 1;
+}
+
+#side-menu-left {
+  width: 100px;
+}
+
+#text-log {
+  display: flex;
+  flex-flow: column;
+  flex-grow: 1;
+}
+
 .rline {
   display: flex;
   flex-flow: row-reverse nowrap;
@@ -10,5 +41,28 @@
 
 .column {
   display: flex;
-  flex-flow: nowrap;
+  flex-flow: column nowrap;
+}
+
+.sender-bubble {
+  background: #D0D0D0;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.user-bubble {
+  background: #F5972A;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#side-menu-right {
+  width: 100px;
+}
+
+#footer {
+  height: 30px;
+  background: #F5972A;
 }

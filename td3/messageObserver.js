@@ -6,14 +6,21 @@
  */
 class MessageObserver {
   read(message, user) {
-    var par = document.createElement('div')
+    var line = document.createElement('div')
     if (message.sender == user.name) {
-      par.className = "rline"
+      line.className = "rline"
+      var par = document.createElement('div')
+      par.className = "user-bubble"
+      par.innerHTML = message.data
+      line.appendChild(par)
     } else {
-      par.className = "lline"
+      line.className = "lline"
+      var par = document.createElement('div')
+      par.className = "sender-bubble"
+      par.innerHTML = message.sender + ": " + message.data
+      line.appendChild(par)
     }
-    par.innerHTML = message.data
-    $('body').append(par)
+    $('#text-log').append(line)
     return message.data
   }
 
