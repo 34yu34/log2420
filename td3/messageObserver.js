@@ -19,8 +19,11 @@ class MessageObserver {
       par.className = "sender-bubble"
       par.innerHTML = message.sender + ": " + message.data
       line.appendChild(par)
+      var audio = new Audio('notif.mp3');
+      audio.play();
     }
-    $('#text-log').append(line)
+    $('#text-log')
+      .append(line)
     return message.data
   }
 
