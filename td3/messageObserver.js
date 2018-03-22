@@ -27,8 +27,12 @@ class MessageObserver {
     return message.data
   }
 
-  send(msg, socket, channel, user) {
-    message = new Message("onMessage", channel.id, msg, user, Date.now())
-    socket.send(JSON.stringify(message))
+  message(socket, channel, user) {
+    var msg = document.getElementById("message-writer");
+    if (msg.value != "") {
+      var message = new Message("onMessage", channel.id, msg.value, user.name, Date.now());
+      socket.send(JSON.stringify(message));
+      msg.value = "";
+    }
   }
 }

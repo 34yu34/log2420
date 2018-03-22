@@ -34,4 +34,16 @@ class Observable {
       }
     }
   }
+  /*********************************************************************
+   * send
+   *********************************************************************/
+  message() {
+    var msgObs = this.messageObserver
+    var currChannel = this.channel
+    var user = this.user
+    var socket = this.socket
+    return function (event) {
+      msgObs.message(socket, currChannel, user)
+    }
+  }
 }
