@@ -7,10 +7,12 @@ var b = new Observable(jacob)
 
 function envoyer_message() {
   var content = document.getElementById("input");
-  var m = new Message("onMessage", active_user.channel.id,
-    content.value, active_user.user.name, Date.now());
-  active_user.socket.send(JSON.stringify(m));
-  content.value = "";
+  if (content.value != "") {
+    var m = new Message("onMessage", active_user.channel.id,
+      content.value, active_user.user.name, Date.now());
+    active_user.socket.send(JSON.stringify(m));
+    content.value = "";
+  }
 }
 
 function enter(event) {
