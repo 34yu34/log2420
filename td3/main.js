@@ -12,3 +12,9 @@ function envoyer_message() {
   active_user.socket.send(JSON.stringify(m));
   content.value = "";
 }
+
+function enter(event) {
+  if (event.keyCode == 13) {
+    envoyer_message();
+  }
+}
