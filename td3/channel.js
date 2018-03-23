@@ -22,4 +22,13 @@ class Channel {
     this.messages = messages;
     this.numberOfUsers = numberOfUsers;
   }
+
+  copy(channel) {
+    this.id = channel.id;
+    this.name = channel.name;
+    this.joinStatus = channel.status;
+    this.messages = channel.messages;
+    this.numberOfUsers = channel.numberOfUsers;
+  }
+
 }

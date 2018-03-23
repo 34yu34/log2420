@@ -8,9 +8,8 @@ class Observable {
 
   constructor(user) {
     this.socket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + user.name)
-    this.channel = new Channel("", "", true, [""], 9);
     this.user = user
-    //this.channelObserver = ChannelObserver()
+    this.channelObserver = new ChannelObserver()
     this.messageObserver = new MessageObserver()
     this.socket.onopen = function (event) {}
     this.socket.onmessage = this.onMessage()
@@ -19,31 +18,41 @@ class Observable {
    *
    *********************************************************************/
   onMessage() {
-    var channel = this.channel
     var user = this.user
-    var messageObserver = this.messageObserver
+    var msgObs = this.messageObserver
+    var chnObs = this.channelObserver
+    var updateScroll = this.updateScroll
     return function (event) {
       var msg = JSON.parse(event.data)
       console.log(msg)
       if (msg.eventType == "updateChannelsList") {
-        channel.id = msg.data[0].id
-        var m = new Message("onMessage", channel.id, "hello there \nGeneral kenobi", user.name, Date.now())
-        this.send(JSON.stringify(m))
+        chnObs.update(msg.data)
+        if (chnObs.currentChannel.id == "") {
+          chnObs.choose(this, "Général", user)
+        }
       } else if (msg.eventType == "onMessage") {
-        messageObserver.read(msg, user)
+        msgObs.read(msg, user)
+        updateScroll()
       }
     }
   }
   /*********************************************************************
    * send
    *********************************************************************/
-  message() {
+  sendMessage() {
     var msgObs = this.messageObserver
-    var currChannel = this.channel
+    var currChannel = this.channelObserver.currentChannel
     var user = this.user
     var socket = this.socket
     return function (event) {
-      msgObs.message(socket, currChannel, user)
+      msgObs.sendMessage(socket, currChannel, user)
     }
+  }
+  /*********************************************************************
+   *  Permet de garder le scroll en bas lors de la reception des messages
+   *********************************************************************/
+  updateScroll() {
+    var element = document.getElementById("text-log");
+    element.scrollTop = element.scrollHeight;
   }
 }
