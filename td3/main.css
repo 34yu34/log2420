@@ -79,6 +79,13 @@ body {
   max-width: 40%;
 }
 
+.admin-bubble {
+  overflow-wrap: break-word;
+  width: 100%;
+  text-align: center;
+  margin: 2px;
+}
+
 #message-bar {
   display: flex;
   flex-shrink: 0;

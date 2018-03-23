@@ -13,6 +13,14 @@ class MessageObserver {
       par.className = "user-bubble"
       par.innerHTML = message.data
       line.appendChild(par)
+    } else if (message.sender == "Admin") {
+      line.className = "lline"
+      var par = document.createElement('div')
+      par.className = "admin-bubble"
+      par.innerHTML = message.data
+      line.appendChild(par)
+      var audio = new Audio('notif.mp3');
+      audio.play();
     } else {
       line.className = "lline"
       var par = document.createElement('div')
