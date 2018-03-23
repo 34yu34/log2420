@@ -45,8 +45,22 @@ class Observable {
     var user = this.user
     var socket = this.socket
     return function (event) {
-      msgObs.sendMessage(socket, currChannel, user)
+      msgObs.sendMessage(socket, currChannel, user, "")
     }
+  }
+  /*********************************************************************
+   *  Like
+   *********************************************************************/
+  sendLike() {
+    var msgObs = this.messageObserver
+    var currChannel = this.channelObserver.currentChannel
+    var user = this.user
+    var socket = this.socket
+    return function (event) {
+      console.log(currChannel)
+      msgObs.sendMessage(socket, currChannel, user, "like")
+    }
+
   }
   /*********************************************************************
    *  Permet de garder le scroll en bas lors de la reception des messages

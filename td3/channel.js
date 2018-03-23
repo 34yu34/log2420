@@ -15,7 +15,7 @@ class Channel {
    * @param {Array<string>} messages - The list the of the messages in the channel.
    * @param {number} numberOfUsers - Count the users in the channel.
    */
-  constructor(id, name, status, messages, numberOfUsers) {
+  constructor(id = "", name = "", status = false, messages = [""], numberOfUsers = 1) {
     this.id = id;
     this.name = name;
     this.joinStatus = status;

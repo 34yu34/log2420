@@ -7,7 +7,7 @@
 class ChannelObserver {
   constructor() {
     this.channels = {}
-    this.currentChannel = new Channel("", "", true, [""], 1)
+    this.currentChannel = new Channel()
   }
 
   push(channel) {
@@ -25,7 +25,8 @@ class ChannelObserver {
       var msgOut = new Message("onLeaveChannel", this.currentChannel.id, null, user.name, Date.now())
       socket.send(JSON.stringify(msgOut))
     }
-    this.currentChannel = this.channels[name]
+    this.currentChannel.copy(this.channels[name])
+    $("#message-channel").text("Current Channel : " + this.currentChannel.name)
     var msgIn = new Message("onJoinChannel", this.currentChannel.id, null, user.name, Date.now())
     socket.send(JSON.stringify(msgIn))
   }

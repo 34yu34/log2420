@@ -1,6 +1,7 @@
 html {
   height: 100%;
 }
+
 body {
   height: 100%;
   display: flex;
@@ -24,12 +25,25 @@ body {
   width: 100px;
 }
 
+#message-zone {
+  flex-grow: 1;
+  flex-shrink: 0;
+  min-height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+#message-channel {
+  background: #F9DF72;
+  font-size: 25px;
+  padding: 10px;
+}
+
 #text-log {
   display: flex;
   flex-flow: column;
   flex-grow: 1;
   overflow-y: scroll;
-  min-height: 100%;
 }
 
 .rline {
@@ -65,8 +79,28 @@ body {
   max-width: 40%;
 }
 
+#message-bar {
+  display: flex;
+  flex-shrink: 0;
+}
+
+#message-writer {
+  padding: 10px;
+  text-align: right;
+  flex-grow: 1;
+  font-size: 17px;
+}
+
+#message-bar button {
+  font-size: 20px;
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
 #side-menu-right {
-  width: 100px;
+  width: 40%;
 }
 
 #footer {
