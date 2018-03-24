@@ -21,14 +21,15 @@ class Observable {
     var user = this.user
     var msgObs = this.messageObserver
     var chnObs = this.channelObserver
+    var socket = this.socket
     var updateScroll = this.updateScroll
     return function (event) {
       var msg = JSON.parse(event.data)
       console.log(msg)
       if (msg.eventType == "updateChannelsList") {
-        chnObs.update(msg.data)
+        chnObs.update(msg.data, socket, user)
         if (chnObs.currentChannel.id == "") {
-          chnObs.choose(this, "Général", user)
+          chnObs.choose(this, user)()
         }
       } else if (msg.eventType == "onMessage") {
         msgObs.read(msg, user)

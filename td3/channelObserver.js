@@ -14,21 +14,33 @@ class ChannelObserver {
     this.channels[channel.name] = channel
   }
 
-  update(channelList) {
+  update(channelList, socket, user) {
+    $("#channel-list").empty()
     for (var i in channelList) {
       this.push(channelList[i])
+      var innerHtml = "<div class='channel-container lline'><i class='fas fa-"
+      innerHtml += (channelList[i].joinStatus ? "minus'" : "plus'") + " href='"
+      innerHtml += channelList[i].name + "'></i>" + channelList[i].name + "</div > "
+      $("#channel-list").append(innerHtml)
     }
+    $(".channel-container i").bind("click", this.choose(socket, user))
   }
 
-  choose(socket, name, user) {
-    if (this.currentChannel.id != "") {
-      var msgOut = new Message("onLeaveChannel", this.currentChannel.id, null, user.name, Date.now())
-      socket.send(JSON.stringify(msgOut))
+  choose(socket, user) {
+    var chnlObs = this
+    return function (e) {
+      var name
+      if (chnlObs.currentChannel.id != "") {
+        var msgOut = new Message("onLeaveChannel", chnlObs.currentChannel.id, null, user.name, Date.now())
+        socket.send(JSON.stringify(msgOut))
+        name = this.getAttribute("href")
+      } else {
+        name = "Général"
+      }
+      chnlObs.currentChannel.copy(chnlObs.channels[name])
+      $("#message-zone .header").text("Current Channel : " + chnlObs.currentChannel.name)
+      var msgIn = new Message("onJoinChannel", chnlObs.currentChannel.id, null, user.name, Date.now())
+      socket.send(JSON.stringify(msgIn))
     }
-    this.currentChannel.copy(this.channels[name])
-    $("#message-zone .header").text("Current Channel : " + this.currentChannel.name)
-    var msgIn = new Message("onJoinChannel", this.currentChannel.id, null, user.name, Date.now())
-    socket.send(JSON.stringify(msgIn))
   }
-
 }
