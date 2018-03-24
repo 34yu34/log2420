@@ -26,7 +26,7 @@ class ChannelObserver {
       socket.send(JSON.stringify(msgOut))
     }
     this.currentChannel.copy(this.channels[name])
-    $("#message-channel").text("Current Channel : " + this.currentChannel.name)
+    $("#message-zone .header").text("Current Channel : " + this.currentChannel.name)
     var msgIn = new Message("onJoinChannel", this.currentChannel.id, null, user.name, Date.now())
     socket.send(JSON.stringify(msgIn))
   }

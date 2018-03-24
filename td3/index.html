@@ -13,6 +13,8 @@
   <script src="observable.js" charset="utf-8"></script>
   <script src="main.js" charset="utf-8"></script>
   <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css" integrity="sha384-v2Tw72dyUXeU3y4aM2Y0tBJQkGfplr39mxZqlTBDUZAb9BGoC40+rdFCG0m10lXk" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css" integrity="sha384-q3jl8XQu1OpdLgGFvNRnPdj5VIlCvgsDQTQB6owSOHWlAurxul7f+JpUOVdAiJ5P" crossorigin="anonymous">
 </head>
 
 <body>
@@ -21,21 +23,46 @@
   </div>
   <div id="core">
     <div id="message-zone">
-      <div id="message-channel">Current Channel : </div>
+      <header class=header>Current Channel : </header>
       <div id="text-log"></div>
       <div id="message-bar">
-        <button id="message-liker">Like</button>
+        <button id="message-liker"><i class="fas fa-thumbs-up"></i></button>
         <input id="message-writer" placeholder="message...">
         <button id="message-sender">Send</button>
       </div>
     </div>
     <div id="side-menu-right">
+      <header class="header">
+        <div class="lline">
+          Liste des Groupes
+        </div>
+        <div class="lline">
+          <div class="">
+            Groupes Disponible
+          </div>
+          <div class="spacer"></div>
+          <i class="fas fa-plus"></i>
+          <i class="fas fa-cog"></i>
+        </div>
+      </header>
+      <div id="channel-list">
+        <div class="channel-container lline">
+          <i class="fas fa-plus"></i> General
+        </div>
+        <div class="channel-container lline">
+          <i class="fas fa-plus"></i> General
+        </div>
+        <div class="channel-container lline">
+          <i class="fas fa-plus"></i> General
+        </div>
+        <div class="channel-container lline">
+          <i class="fas fa-plus"></i> General
+        </div>
+      </div>
+    </div>
+    <div id="footer">
 
     </div>
-  </div>
-  <div id="footer">
-
-  </div>
 </body>
 
 </html>
