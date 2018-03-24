@@ -11,13 +11,13 @@ class MessageObserver {
       line.className = "rline"
       var par = document.createElement('div')
       par.className = "user-bubble"
-      par.innerHTML = message.data
+      par.innerHTML = (message.data == "like" ? "<i class='fas fa-thumbs-up'></i>" : message.data)
       line.appendChild(par)
     } else if (message.sender == "Admin") {
       line.className = "lline"
       var par = document.createElement('div')
       par.className = "admin-bubble"
-      par.innerHTML = message.data
+      par.innerHTML = (message.data == "like" ? "<i class='fas fa-thumbs-up'></i>" : message.data)
       line.appendChild(par)
       var audio = new Audio('notif.mp3');
       audio.play();
@@ -25,7 +25,7 @@ class MessageObserver {
       line.className = "lline"
       var par = document.createElement('div')
       par.className = "sender-bubble"
-      par.innerHTML = message.sender + ": " + message.data
+      par.innerHTML = message.sender + ": " + (message.data == "like" ? "<i class='fas fa-thumbs-up'></i>" : message.data)
       line.appendChild(par)
       var audio = new Audio('notif.mp3');
       audio.play();
@@ -47,5 +47,12 @@ class MessageObserver {
       socket.send(JSON.stringify(message));
       msg.value = "";
     }
+  }
+
+  isLike(messageData) {
+    if (messageData == "like") {
+      return "<i class='fas fa-thumbs-up></i>'"
+    }
+    return messageData
   }
 }
