@@ -58,7 +58,6 @@ class Observable {
     var user = this.user
     var socket = this.socket
     return function (event) {
-      console.log(currChannel)
       msgObs.sendMessage(socket, currChannel, user, "like")
     }
 

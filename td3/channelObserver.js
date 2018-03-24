@@ -36,6 +36,8 @@ class ChannelObserver {
         name = this.getAttribute("href")
       } else {
         name = "Général"
+        chnlObs.currentChannel.copy(chnlObs.channels[name])
+        return
       }
       chnlObs.currentChannel.copy(chnlObs.channels[name])
       $("#message-zone .header").text("Current Channel : " + chnlObs.currentChannel.name)
