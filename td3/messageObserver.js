@@ -29,8 +29,7 @@ class MessageObserver {
       var audio = new Audio('notif.mp3');
       audio.play();
       msgLine.appendChild(par)
-      $('#text-log')
-        .append(msgLine)
+      $('#text-log').append(msgLine)
       return message.data
     } else {
       msgLine.className = "lline"
@@ -46,8 +45,7 @@ class MessageObserver {
     column.appendChild(msgLine)
     column.appendChild(time)
     overLine.appendChild(column)
-    $('#text-log')
-      .append(overLine)
+    $('#text-log').append(overLine)
     return message.data
   }
 
