@@ -88,6 +88,7 @@ body {
   margin: 1px 5px;
   padding: 10px;
   border-radius: 10px;
+  overflow-wrap: break-word;
 }
 
 .user-bubble {
