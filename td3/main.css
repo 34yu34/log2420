@@ -70,16 +70,30 @@ body {
   flex-flow: column nowrap;
 }
 
+.column-message {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+}
+
+.name-line {
+  color: #7A797A !important;
+  margin: 5px 15px;
+  margin-bottom: 0px;
+  font-size: 12px;
+}
+
 .sender-bubble {
   background: #D0D0D0;
-  margin: 5px;
+  margin: 1px 5px;
   padding: 10px;
   border-radius: 10px;
+  overflow-wrap: break-word;
 }
 
 .user-bubble {
   background: #F5972A;
-  margin: 5px;
+  margin: 1px 5px;
   padding: 10px;
   border-radius: 10px;
   overflow-wrap: break-word;
@@ -91,6 +105,14 @@ body {
   width: 100%;
   text-align: center;
   margin: 3px;
+}
+
+.time-line {
+  font-style: italic;
+  font-weight: bold;
+  margin: 5px 15px;
+  margin-bottom: 0px;
+  font-size: 12px;
 }
 
 #message-bar {
@@ -107,6 +129,12 @@ body {
 
 #message-bar button {
   font-size: 20px;
+  width: 100px;
+  cursor: pointer
+}
+
+#message-bar button:hover {
+  background: #cccccc;
 }
 
 #side-menu-right {
@@ -123,6 +151,11 @@ body {
 
 #side-menu-right .header .lline:first-child {
   font-size: 18px;
+}
+
+#side-menu-right .header .lline i {
+  margin: 3px;
+  cursor: pointer;
 }
 
 #channel-list {
@@ -142,6 +175,11 @@ body {
 
 .channel-container i {
   margin:0px 20px;
+  cursor: pointer;
+}
+
+.channel-container i:hover {
+  font-weight: bolder;
 }
 
 .channel-container:nth-child(odd) {
