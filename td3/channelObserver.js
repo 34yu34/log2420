@@ -32,16 +32,21 @@ class ChannelObserver {
     var chnlObs = this
     return function (e) {
       var name
-      if (chnlObs.currentChannel.id != "") {
-        $("#text-log").empty()
-        var msgOut = new Message("onLeaveChannel", chnlObs.currentChannel.id, null, user.name, Date.now())
-        socket.send(JSON.stringify(msgOut))
-        name = this.getAttribute("href")
-      } else {
+      if (chnlObs.currentChannel.id == "") {
         name = "Général"
         chnlObs.currentChannel.copy(chnlObs.channels[name])
         $("#message-zone .header").text("Current Channel : " + chnlObs.currentChannel.name)
         return
+      } else if (chnlObs.currentChannel.name == this.getAttribute("href")) {
+        $("#text-log").empty()
+        name = "Général"
+        var msgOut = new Message("onLeaveChannel", chnlObs.currentChannel.id, null, user.name, Date.now())
+        socket.send(JSON.stringify(msgOut))
+      } else {
+        var msgOut = new Message("onLeaveChannel", chnlObs.currentChannel.id, null, user.name, Date.now())
+        socket.send(JSON.stringify(msgOut))
+        name = this.getAttribute("href")
+
       }
       chnlObs.currentChannel.copy(chnlObs.channels[name])
       $("#message-zone .header").text("Current Channel : " + chnlObs.currentChannel.name)
