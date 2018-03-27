@@ -6,32 +6,48 @@
  */
 class MessageObserver {
   read(message, user) {
-    var line = document.createElement('div')
+    var overLine = document.createElement('div')
+    var column = document.createElement('div')
+    column.className = "column-message"
+    var sender = document.createElement('div')
+    sender.innerHTML = message.sender
+    var msgLine = document.createElement('div')
+    var par = document.createElement('div')
+    par.innerHTML = (message.data == "like" ? "<i class='fas fa-thumbs-up'></i>" : message.data)
+    var time = document.createElement('div')
+    var date = new Date(message.timestamp)
+    time.innerHTML = date.toLocaleTimeString() + " - " + date.toLocaleDateString()
     if (message.sender == user.name) {
-      line.className = "rline"
-      var par = document.createElement('div')
+      msgLine.className = "rline"
+      overLine.className = "rline"
+      time.className = "rline time-line"
+      sender.className = "rline name-line"
       par.className = "user-bubble"
-      par.innerHTML = (message.data == "like" ? "<i class='fas fa-thumbs-up'></i>" : message.data)
-      line.appendChild(par)
     } else if (message.sender == "Admin") {
-      line.className = "lline"
-      var par = document.createElement('div')
+      msgLine.className = "lline"
       par.className = "admin-bubble"
-      par.innerHTML = (message.data == "like" ? "<i class='fas fa-thumbs-up'></i>" : message.data)
-      line.appendChild(par)
       var audio = new Audio('notif.mp3');
       audio.play();
+      msgLine.appendChild(par)
+      $('#text-log')
+        .append(msgLine)
+      return message.data
     } else {
-      line.className = "lline"
-      var par = document.createElement('div')
+      msgLine.className = "lline"
+      time.className = "lline time-line"
+      sender.className = "lline name-line"
+      overLine.className = "lline"
       par.className = "sender-bubble"
-      par.innerHTML = message.sender + ": " + (message.data == "like" ? "<i class='fas fa-thumbs-up'></i>" : message.data)
-      line.appendChild(par)
       var audio = new Audio('notif.mp3');
       audio.play();
     }
+    msgLine.appendChild(par)
+    column.appendChild(sender)
+    column.appendChild(msgLine)
+    column.appendChild(time)
+    overLine.appendChild(column)
     $('#text-log')
-      .append(line)
+      .append(overLine)
     return message.data
   }
 
