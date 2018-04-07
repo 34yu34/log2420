@@ -13,6 +13,22 @@ body {
   height: 150px;
   background: #F5972A;
   display: flex;
+  flex-flow: row;
+}
+
+#header i {
+  margin: 3px;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+#logo {
+  max-width:50%;
+}
+
+#logo img {
+  max-height: 100%;
+  max-width: 100%;
 }
 
 #core {
