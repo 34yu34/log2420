@@ -69,4 +69,15 @@ class Observable {
     var element = document.getElementById("text-log");
     element.scrollTop = element.scrollHeight;
   }
+
+  /*********************************************************************
+   *  Permet de créer nouveaux cannaux
+   *********************************************************************/
+  createChannel() {
+    var name = prompt("name of new channel:", "");
+    if (name == null || name == "") {
+      name = "no name";
+    }
+    active_user.channelObserver.createChannel(name);
+  }
 }

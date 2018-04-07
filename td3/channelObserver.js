@@ -54,4 +54,14 @@ class ChannelObserver {
       socket.send(JSON.stringify(msgIn))
     }
   }
+
+  /*********************************************************************
+   *  Permet de créer nouveaux channels
+   *********************************************************************/
+  createChannel(name) {
+    var msgOut = new Message("onCreateChannel",
+      active_user.channelObserver.currentChannel.id,
+      name, active_user.user.name, Date.now());
+    active_user.socket.send(JSON.stringify(msgOut));
+  }
 }
