@@ -31,7 +31,7 @@ class Observable {
         if (chnObs.currentChannel.id == "") {
           chnObs.choose(this, user)()
         }
-      } else if (msg.eventType == "onMessage") {
+      } else if (msg.eventType == "onMessage" || msg.eventType == "onError") {
         msgObs.read(msg, user)
         updateScroll()
       }

@@ -10,7 +10,7 @@ class MessageObserver {
     var column = document.createElement('div')
     column.className = "column-message"
     var sender = document.createElement('div')
-    sender.innerHTML = message.sender
+    sender.innerHTML = (message.eventType == "onError" ? "ERROR" : message.sender)
     var msgLine = document.createElement('div')
     var par = document.createElement('div')
     par.innerHTML = (message.data == "like" ? "<i class='fas fa-thumbs-up'></i>" : message.data)
@@ -36,7 +36,7 @@ class MessageObserver {
       time.className = "lline time-line"
       sender.className = "lline name-line"
       overLine.className = "lline"
-      par.className = "sender-bubble"
+      par.className = (message.eventType == "onError" ? "error-bubble" : "sender-bubble")
       var audio = new Audio('notif.mp3');
       audio.play();
     }

@@ -127,6 +127,16 @@ body {
   position: relative
 }
 
+.error-bubble {
+  background: #E30606;
+  margin: 1px 5px;
+  padding: 10px;
+  border-radius: 10px;
+  overflow-wrap: break-word;
+  max-width: 70%;
+  position: relative
+}
+
 .admin-bubble {
   overflow-wrap: break-word;
   width: 100%;
