@@ -31,6 +31,10 @@ body {
   max-width: 100%;
 }
 
+.hidden {
+  display:none;
+}
+
 #core {
   display: flex;
   flex-grow: 1;
