@@ -52,6 +52,20 @@ class ChannelObserver {
       $("#message-zone .header").text("Current Channel : " + chnlObs.currentChannel.name)
       var msgIn = new Message("onJoinChannel", chnlObs.currentChannel.id, null, user.name, Date.now())
       socket.send(JSON.stringify(msgIn))
+
+      //core.clear
+      document.getElementById("text-log").innerHTML = "";
+
+
+      //show old messages
+      //NE MARCHE PAS! ne retourne rien (event-listener ne recoit rien)
+      var msgOut = new Message("getChannel",
+        active_user.channelObserver.currentChannel.id,
+        "", active_user.user.name, Date.now());
+      active_user.socket.send(JSON.stringify(msgOut));
+      //DON'T WORK
+
+
     }
   }
 
