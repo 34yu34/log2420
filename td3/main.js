@@ -17,4 +17,14 @@ $(document)
         active_user.sendMessage()(e);
       }
     })
+    $(".fa-bell").bind("click", function () {
+      $(this).addClass('hidden');
+      $(".fa-bell-slash").removeClass('hidden');
+      isSoundActive = false;
+    })
+    $(".fa-bell-slash").bind("click", function () {
+      $(this).addClass('hidden');
+      $(".fa-bell").removeClass('hidden');
+      isSoundActive = true;
+    })
   })
