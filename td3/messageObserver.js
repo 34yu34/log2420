@@ -27,7 +27,9 @@ class MessageObserver {
       msgLine.className = "lline"
       par.className = "admin-bubble"
       var audio = new Audio('notif.mp3');
-      audio.play();
+      if (isSoundActive) {
+        audio.play();
+      }
       msgLine.appendChild(par)
       $('#text-log').append(msgLine)
       return message.data
@@ -38,7 +40,9 @@ class MessageObserver {
       overLine.className = "lline"
       par.className = (message.eventType == "onError" ? "error-bubble" : "sender-bubble")
       var audio = new Audio('notif.mp3');
-      audio.play();
+      if (isSoundActive) {
+        audio.play();
+      }
     }
     msgLine.appendChild(par)
     column.appendChild(sender)
