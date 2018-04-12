@@ -34,6 +34,11 @@ class Observable {
       } else if (msg.eventType == "onMessage" || msg.eventType == "onError") {
         msgObs.read(msg, user)
         updateScroll()
+
+      } else if (msg.eventType == "onGetChannel" && msg.channelId == chnObs.currentChannel.id) {
+        for (var i = 0; i < msg.data.messages.length; i++) {
+          msgObs.read(msg.data.messages[i], user);
+        }
       }
     }
   }
