@@ -58,14 +58,10 @@ class ChannelObserver {
 
 
       //show old messages
-      //NE MARCHE PAS! ne retourne rien (event-listener ne recoit rien)
-      var msgOut = new Message("getChannel",
+      var msgOut = new Message("onGetChannel",
         active_user.channelObserver.currentChannel.id,
         "", active_user.user.name, Date.now());
       active_user.socket.send(JSON.stringify(msgOut));
-      //DON'T WORK
-
-
     }
   }
 
