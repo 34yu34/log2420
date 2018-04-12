@@ -31,9 +31,11 @@ class Observable {
         if (chnObs.currentChannel.id == "") {
           chnObs.choose(this, user)()
         }
-      } else if (msg.eventType == "onMessage" || msg.eventType == "onError") {
+      } else if (msg.eventType == "onMessage") {
         msgObs.read(msg, user)
         updateScroll()
+      } else if (msg.eventType == "onError") {
+        $("div.alert").removeClass("hidden");
 
       } else if (msg.eventType == "onGetChannel" && msg.channelId == chnObs.currentChannel.id) {
         for (var i = 0; i < msg.data.messages.length; i++) {
